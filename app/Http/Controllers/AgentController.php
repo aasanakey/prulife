@@ -191,7 +191,9 @@ class AgentController extends Controller
     public function insurance()
     {
         
-        $insurance = auth()->user()->clients();
-        return view('agent.insurance',compact('insurance'));
+        $insurance = \App\Models\PolicyPlan::all();
+        $clients = auth()->user()->clients;
+        $polices = auth()->user()->clients;
+        return view('agent.insurance',compact('insurance','clients','polices'));
     }
 }
