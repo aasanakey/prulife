@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -18,10 +18,10 @@
 
 <body id="page-top">
     <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion prulife-bg-gradient p-0">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion prulife-bg-gradient p-0 toggled">
             <div class="container-fluid d-flex flex-column p-0">
                 <div class="d-inline-flex"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                        <div class="sidebar-brand-icon"><img class="d-none d-md-block" src="{{asset('/images/pru-life-logo-small.png')}}"></div>
+                        <div class="sidebar-brand-icon"><img class="d-none" src="{{asset('/images/pru-life-logo-small.png')}}"></div>
                     </a></div>
                 <hr class="sidebar-divider my-0">
                 @yield('sidebar-links')

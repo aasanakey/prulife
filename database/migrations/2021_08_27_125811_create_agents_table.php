@@ -18,10 +18,15 @@ class CreateAgentsTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('phone')->unque();
-            $table->string('email')->unique();
-            $table->enum('role',['agent','staff']);
             $table->timestamp('phone_verified_at')->nullable();
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->enum('role', ['agent', 'staff']);
+            $table->string('avatar')->default('storage/default-avatar.jpg');
+            $table->mediumText('address');
+            $table->foreignId('country_id')->nullable()->constrained('countries')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('state_id')->nullable()->constrained('states')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onUpdate('cascade')->onDelete('restrict');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

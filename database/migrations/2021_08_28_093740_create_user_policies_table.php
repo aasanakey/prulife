@@ -15,7 +15,7 @@ class CreateUserPoliciesTable extends Migration
     {
         Schema::create('user_policies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('policy_plan_id')->cpnstrainded('policy_plans')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('policy_plan_id')->constrainded('policy_plans')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
             $table->text('beneficiaries')->nullable()->default(null);
             $table->date('expiry_date');

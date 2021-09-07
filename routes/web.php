@@ -15,10 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('landing');
 
 Auth::routes(['verify' => true]);
+// Route::group(function () {
+    // Route::post('country', [\App\Http\Controllers\CountryStateCityController::class, 'getCountry'])->name('country');
+    Route::post('state', [\App\Http\Controllers\CountryStateCityController::class, 'getState'])->name('state');
+    Route::post('city', [\App\Http\Controllers\CountryStateCityController::class, 'getCity'])->name('city');
 
+// });
 /**
  * Agent auth routes
  */
@@ -41,10 +46,12 @@ Route::name('agent.')->prefix('agent')->group(function () {
 
 Route::name('agent.')->prefix('agent')->middleware('auth:web-agent')->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\AgentController::class, 'dashboard'])->name('dashboard');
+    Route::resource('profile', \App\Http\Controllers\AgentController::class)->parameters(['profile' => 'agent']);
     Route::get('/prospects', [\App\Http\Controllers\AgentController::class, 'prospects'])->name('prospects');
     Route::post('/prospects', [\App\Http\Controllers\AgentController::class, 'createProspect']);
     Route::get('/clients', [\App\Http\Controllers\AgentController::class, 'clients'])->name('clients');
     Route::post('/clients', [\App\Http\Controllers\AgentController::class, 'createClients']);
     Route::get('/insurance', [\App\Http\Controllers\AgentController::class, 'insurance'])->name('insurance');
+    Route::post('/insurance', [\App\Http\Controllers\AgentController::class, 'createInsurance']);
 
 });

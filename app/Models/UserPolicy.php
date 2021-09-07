@@ -28,4 +28,12 @@ class UserPolicy extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Get the policy plan that owns the policy.
+     */
+    public function plan()
+    {
+        return $this->belongsTo(PolicyPlan::class);
+    }
 }

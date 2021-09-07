@@ -47,16 +47,40 @@ class Agent extends Authenticatable implements MustVerifyEmail
      */
     public function clients()
     {
-        return $this->belongsToMany(User::class,'client_agents','agent_id','user_id')
-        ->withPivot('lead')->wherePivot('lead','customer');
+        return $this->belongsToMany(User::class, 'client_agents', 'agent_id', 'user_id')
+            ->withPivot('lead')->wherePivot('lead', 'customer');
     }
-     
+
     /**
      * The users(prospects) that belong to the agent.
      */
     public function prospects()
     {
-        return $this->belongsToMany(User::class,'client_agents','agent_id','user_id')
-        ->withPivot('lead')->wherePivot('lead','!=','customer');
+        return $this->belongsToMany(User::class, 'client_agents', 'agent_id', 'user_id')
+            ->withPivot('lead')->wherePivot('lead', '!=', 'customer');
+    }
+
+    /**
+     * Get the country that owns the agent.
+     */
+    public function country()
+    {
+        return $this->belongsTo(\App\Models\Country::class);
+    }
+
+    /**
+     * Get the state that owns the agent.
+     */
+    public function state()
+    {
+        return $this->belongsTo(\App\Models\State::class);
+    }
+
+    /**
+     * Get the city that owns the agent.
+     */
+    public function city()
+    {
+        return $this->belongsTo(\App\Models\City::class);
     }
 }
