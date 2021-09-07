@@ -25,7 +25,7 @@
             <div class="col-lg-4">
                 <div class="card mb-3">
                     <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="{{asset($agent->avatar)}}" width="160" height="160">
-                        <form class="mb-3" action="{{route('agent.profile.update',['agent'=>$agent])}}" method="post">
+                        <form class="mb-3" action="{{route('agent.profile.update',['agent'=>$agent])}}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="input-group">

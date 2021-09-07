@@ -73,13 +73,13 @@ class AgentController extends Controller
      */
     public function update(Request $request, Agent $agent)
     {
-        // dd($request->all());
+        
         $validator = Validator::make($request->all(), [
             "firstname" => ['sometimes', 'required', 'string', 'max:255'],
             "lastname" => ['sometimes', 'required', 'string', 'max:255'],
             "phone" => ['sometimes', 'required', 'phone:AUTO,GH'],
             "email" => ['sometimes', 'required', 'string', 'email', 'max:255'],
-            "avatar" => ['sometimes', 'required', 'mimes:jpg,bmp,png,svg'],
+            "avatar" => ['sometimes', 'required','image', 'mimes:jpg,jpeg,png,svg,bmp,tif,jfif'],
             "address" => ['sometimes', 'required', 'string'],
             "country" => ['sometimes', 'required','exists:countries,id'],
             "state" => ['sometimes', 'nullable','exists:states,id'],
