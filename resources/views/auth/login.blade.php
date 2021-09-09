@@ -77,7 +77,7 @@
                 <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password" autocomplete="current-password">
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block prulife-btn-primary" type="submit">Log In</button>
+                <button class="btn btn-block prulife-btn-primary" type="submit">Log In</button>
             </div>
             @if (Route::has('password.request'))
             <a class="text-white forgot" href="{{ route('password.request') }}">Forgot your password?</a>

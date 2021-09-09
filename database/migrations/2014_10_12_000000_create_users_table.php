@@ -17,11 +17,15 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
-            $table->text('address');
+            $table->mediumText('address');
             $table->string('phone')->unique();
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('avatar')->default('storage/default-avatar.jpg');
+            $table->foreignId('country_id')->nullable()->constrained('countries')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('state_id')->nullable()->constrained('states')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onUpdate('cascade')->onDelete('restrict');
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();

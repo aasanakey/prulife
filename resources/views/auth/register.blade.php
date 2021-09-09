@@ -111,7 +111,7 @@
             </div>
             <div class="form-group">
                 <label class="text-white">Address</label>
-                <textarea class="textarea-noresize form-control @error('address') is-invalid @enderror" name="address" value="{{old('address')}}" cols="3" placeholder="Home/Office Address"></textarea>
+                <textarea class="textarea-noresize form-control @error('address') is-invalid @enderror" name="address"  cols="3" placeholder="Home/Office Address">{{old('address')}}</textarea>
             </div>
             <div class="form-group">
                 <label class="text-white">Password</label>
@@ -119,13 +119,13 @@
             </div>
             <div class="form-group">
                 <div class="form-check">
-                    <input class="form-check-input @error('agreement') is-invalid @enderror" name="agreement" {{ old( 'agreement') ? 'checked' : '' }} type="checkbox" id="formCheck-1">
+                    <input class="form-check-input @error('terms') is-invalid @enderror" name="terms" {{ old( 'terms') ? 'checked' : '' }} type="checkbox" id="formCheck-1">
                     <label class="form-check-label text-white" for="formCheck-1">
                         I accept the <a href="#">Terms of service</a>&nbsp;&amp;&nbsp;<a href="#">Privacy Policy</a>.
                     </label>
                 </div>
             </div>
-            <div class="form-group"><button class="btn btn-primary btn-block prulife-btn-primary" type="submit">Register</button></div>
+            <div class="form-group"><button class="btn btn-block prulife-btn-primary" type="submit">Register</button></div>
         </form>
     </div>
 </section>
@@ -133,12 +133,9 @@
 
 @section('scripts')
     @parent
-    <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput-jquery.min.js"
-integrity="sha512-QK4ymL3xaaWUlgFpAuxY+6xax7QuxPB3Ii/99nykNP/PlK3NTQa/f/UbQQnWsM4h5yjQoMjWUhCJbYgWamtL6g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script type="text/javascript">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput-jquery.min.js" integrity="sha512-QK4ymL3xaaWUlgFpAuxY+6xax7QuxPB3Ii/99nykNP/PlK3NTQa/f/UbQQnWsM4h5yjQoMjWUhCJbYgWamtL6g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
     $(document).ready(function () {
-        $('#smartwizard').smartWizard();
         $("input[type='tel']").intlTelInput({
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/utils.js",
             initialCountry: "auto",

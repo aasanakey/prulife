@@ -17,13 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 })->name('landing');
 
+/**
+ * Client auth routes
+ */
 Auth::routes(['verify' => true]);
-// Route::group(function () {
-    // Route::post('country', [\App\Http\Controllers\CountryStateCityController::class, 'getCountry'])->name('country');
-    Route::post('state', [\App\Http\Controllers\CountryStateCityController::class, 'getState'])->name('state');
-    Route::post('city', [\App\Http\Controllers\CountryStateCityController::class, 'getCity'])->name('city');
 
-// });
+/**
+ * Client dashboard routes
+ */
+Route::name('user.')->prefix('client')->middleware('auth:web')->group(function(){
+    Route::get('/dashboard',[\App\Http\Controllers\UserController::class,'dashboard'])->name('dashboard');
+    Route::resource('profile',\App\Http\Controllers\UserController::class)->parameters(['profile'=>'user'])->except(['index','create','show']);
+    Route::get('insurance',[\App\Http\Controllers\UserController::class,'insurance'])->name('insurance');
+});
+
 /**
  * Agent auth routes
  */
@@ -44,6 +51,9 @@ Route::name('agent.')->prefix('agent')->group(function () {
     Route::post('email/resend', [\App\Http\Controllers\Auth\Agent\VerificationController::class, 'resend'])->name('verification.resend');
 });
 
+/**
+ * Agent dashboard routes
+ */
 Route::name('agent.')->prefix('agent')->middleware('auth:web-agent')->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\AgentController::class, 'dashboard'])->name('dashboard');
     Route::resource('profile', \App\Http\Controllers\AgentController::class)->parameters(['profile' => 'agent']);
@@ -53,5 +63,12 @@ Route::name('agent.')->prefix('agent')->middleware('auth:web-agent')->group(func
     Route::post('/clients', [\App\Http\Controllers\AgentController::class, 'createClients']);
     Route::get('/insurance', [\App\Http\Controllers\AgentController::class, 'insurance'])->name('insurance');
     Route::post('/insurance', [\App\Http\Controllers\AgentController::class, 'createInsurance']);
+
+});
+
+Route::prefix('csc')->group(function () {
+    // Route::post('country', [\App\Http\Controllers\CountryStateCityController::class, 'getCountry'])->name('country');
+    Route::post('state', [\App\Http\Controllers\CountryStateCityController::class, 'getState'])->name('state');
+    Route::post('city', [\App\Http\Controllers\CountryStateCityController::class, 'getCity'])->name('city');
 
 });

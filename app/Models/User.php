@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -50,14 +49,38 @@ class User extends Authenticatable
      */
     public function agent()
     {
-        return $this->belongsToMany(Agent::class,'client_agents','user_id', 'agent_id');
+        return $this->belongsToMany(Agent::class, 'client_agents', 'user_id', 'agent_id');
     }
-    
+
     /**
      * Get the policies for the user.
      */
     public function policies()
     {
         return $this->hasMany(UserPolicy::class);
+    }
+
+    /**
+     * Get the country that owns the user.
+     */
+    public function country()
+    {
+        return $this->belongsTo(\App\Models\Country::class);
+    }
+
+    /**
+     * Get the state that owns the user.
+     */
+    public function state()
+    {
+        return $this->belongsTo(\App\Models\State::class);
+    }
+
+    /**
+     * Get the city that owns the user.
+     */
+    public function city()
+    {
+        return $this->belongsTo(\App\Models\City::class);
     }
 }
