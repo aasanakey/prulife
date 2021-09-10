@@ -177,4 +177,49 @@ class UserController extends Controller
         $policies = auth()->user()->policies;
         return view('client.insurance',compact('policies'));
     }
+
+    /**
+     * Show claims view
+     * @return \Illuminate\Http\Response
+     */
+    public function claims()
+    {
+        $claims = auth()->user()->policies;
+        return view('client.claims',compact('claims'));
+    }
+
+    /**
+     * Show payments view
+     * @return \Illuminate\Http\Response
+     */
+    public function payments()
+    {
+        $payments = auth()->user()->transactions;
+        return view('client.payments',compact('payments'));
+    }
+
+    /**
+     * Show sms view
+     * @return \Illuminate\Http\Response
+     */
+    public function sms()
+    {
+        $messages = auth()->user()->policies;
+        return view('client.sms',compact('messages'));
+    }
+
+     /**
+     * Show insurance view
+     * @return \Illuminate\Http\Response
+     */
+    public function emails()
+    {
+        $messages = auth()->user()->policies;
+        return view('client.emails',compact('messages'));
+    }
+
+    public function communications(Request $request)    
+    {
+        Validator::make($request->all(),[])->validate();
+    }
 }

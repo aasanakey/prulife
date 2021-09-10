@@ -83,4 +83,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(\App\Models\City::class);
     }
+
+     /**
+     * Get the transactions for the user.
+     */
+    public function transactions()
+    {
+        return $this->hasMany(\App\Models\Payment::class);
+    }
 }

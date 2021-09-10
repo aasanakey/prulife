@@ -1,7 +1,6 @@
 @extends('layouts.client.layout')
 @section('styles')
     @parent
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/css/intlTelInput.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/css/intlTelInput.css" integrity="sha512-gxWow8Mo6q6pLa1XH/CcH8JyiSDEtiwJV78E+D+QP0EVasFs8wKXq16G8CLD4CJ2SnonHr4Lm/yY2fSI2+cbmw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
@@ -11,26 +10,23 @@
         .intl-tel-input,.iti {
             width:100%;
         }
-        /* .nice-select{
-            width: 100%;
-        } */
     </style>
 @endsection
 @section('content')
 <div class="container-fluid">
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-        <h3 class="text-dark mb-0">Insurance</h3>
-        {{-- <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="#" data-toggle="modal" data-target="#formModal">
-            <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add Policy
-        </a> --}}
+        <h3 class="text-dark mb-0">E Mail</h3>
+        <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="#" data-toggle="modal" data-target="#formModal">
+            <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;New Email
+        </a>
     </div>
     @include('layouts.messages')
     <div class="card shadow">
         <div class="card-header py-3">
-            <p class="text-prulife m-0 font-weight-bold">Insurance</p>
+            <p class="text-prulife m-0 font-weight-bold">Email mes</p>
         </div>
         <div class="card-body">
-            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+            {{-- <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                 <table class="table my-0" id="clientsTable">
                     <thead>
                         <tr>
@@ -38,18 +34,18 @@
                             <th>Insurance Plan</th>
                             <th>Expiry Date</th>
                             <th>Renewal Date</th>
-                            {{-- <th>Address</th> --}}
+                            <th>Address</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($policies as $policy)
+                        @forelse ($messages as $message)
                             <tr>
-                                <td>{{$policy->user->firstname.' '.$policy->user->lastname}}</td>
-                                <td>{{$policy->plan->name}}</td>
-                                <td>{{$policy->expiry_date}}</td>
-                                <td>{{$policy->renewal_date}}</td>
-                                {{-- <td>{{$policy->address}}</td> --}}
+                                <td>{{$message->user->firstname}}</td>
+                                <td>{{$message->plan->name}}</td>
+                                <td>{{$message->expiry_date}}</td>
+                                <td>{{$message->renewal_date}}</td>
+                                <td>{{$message->address}}</td>
                                 <td><button class="btn prulife-btn-primary" data-toggle="tooltip" data-bss-tooltip="" type="button" title="Edit"><i class="fas fa-pen"></i></button><button class="btn prulife-btn-primary" data-toggle="tooltip" data-bss-tooltip="" type="button" title="Delete"><i class="fas fa-trash"></i></button></td>
                             </tr>
                         @empty
@@ -62,12 +58,29 @@
                             <th>Insurance Plan</th>
                             <th>Expiry Date</th>
                             <th>Renewal Date</th>
-                            {{-- <th>Address</th> --}}
+                            <th>Address</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                 </table>
-            </div>
+            </div> --}}
+            @forelse ($messages as $message)
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link btn prulife-btn-primary btn-sm"><i class="fas fa-eye"></i>Another link</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            @empty
+
+            @endforelse
         </div>
     </div>
     <!-- Modal -->

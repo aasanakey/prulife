@@ -25,10 +25,15 @@ Auth::routes(['verify' => true]);
 /**
  * Client dashboard routes
  */
-Route::name('user.')->prefix('client')->middleware('auth:web')->group(function(){
-    Route::get('/dashboard',[\App\Http\Controllers\UserController::class,'dashboard'])->name('dashboard');
-    Route::resource('profile',\App\Http\Controllers\UserController::class)->parameters(['profile'=>'user'])->except(['index','create','show']);
-    Route::get('insurance',[\App\Http\Controllers\UserController::class,'insurance'])->name('insurance');
+Route::name('user.')->prefix('client')->middleware('auth:web')->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\UserController::class, 'dashboard'])->name('dashboard');
+    Route::resource('profile', \App\Http\Controllers\UserController::class)->parameters(['profile' => 'user'])->except(['index', 'create', 'show']);
+    Route::get('insurance', [\App\Http\Controllers\UserController::class, 'insurance'])->name('insurance');
+    Route::get('claims', [\App\Http\Controllers\UserController::class, 'claims'])->name('claims');
+    Route::get('payments', [\App\Http\Controllers\UserController::class, 'payments'])->name('payments');
+    Route::get('sms', [\App\Http\Controllers\UserController::class, 'sms'])->name('sms');
+    Route::get('emails', [\App\Http\Controllers\UserController::class, 'emails'])->name('emails');
+
 });
 
 /**
