@@ -16,15 +16,14 @@
     </style>
 @endsection
 @section('content')
-<div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">Prospects</h3>
-    <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="#" data-toggle="modal" data-target="#formModal">
-        <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add Prospect
-    </a>
-</div>
-@include('layouts.messages')
 <div class="container-fluid">
-    {{-- <h3 class="text-dark mb-4">Product</h3> --}}
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0">Prospects</h3>
+        <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="#" data-toggle="modal" data-target="#formModal">
+            <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add Prospect
+        </a>
+    </div>
+    @include('layouts.messages')
     <div class="card shadow">
         <div class="card-header py-3">
             <p class="text-prulife m-0 font-weight-bold">Prospect Info</p>
@@ -170,7 +169,7 @@
     <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
         <!-- phone input cdn -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.7/js/intlTelInput.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput-jquery.min.js" 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput-jquery.min.js"
 integrity="sha512-QK4ymL3xaaWUlgFpAuxY+6xax7QuxPB3Ii/99nykNP/PlK3NTQa/f/UbQQnWsM4h5yjQoMjWUhCJbYgWamtL6g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
@@ -206,7 +205,7 @@ integrity="sha512-QK4ymL3xaaWUlgFpAuxY+6xax7QuxPB3Ii/99nykNP/PlK3NTQa/f/UbQQnWsM
                     callback(countryCode);
                 });
             },
-        });  
+        });
         @if ($errors->any())
             $('#formModal').modal('show');
         @endif

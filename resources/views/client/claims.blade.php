@@ -1,4 +1,4 @@
-@extends('layouts.agent.layout')
+@extends('layouts.client.layout')
 @section('styles')
     @parent
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/css/intlTelInput.css"> -->
@@ -16,18 +16,19 @@
     </style>
 @endsection
 @section('content')
-<div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">Prospects</h3>
-    <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="#" data-toggle="modal" data-target="#formModal">
-        <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add Prospect
-    </a>
-</div>
-@include('layouts.messages')
+
 <div class="container-fluid">
     {{-- <h3 class="text-dark mb-4">Product</h3> --}}
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0">Claims</h3>
+        <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="#" data-toggle="modal" data-target="#formModal">
+            <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add Claim
+        </a>
+    </div>
+@include('layouts.messages')
     <div class="card shadow">
         <div class="card-header py-3">
-            <p class="text-prulife m-0 font-weight-bold">Prospect Info</p>
+            <p class="text-prulife m-0 font-weight-bold">Insurance Claims</p>
         </div>
         <div class="card-body">
             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -43,13 +44,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($prospects as $prospect)
+                        @forelse ($claims as $claim)
                             <tr>
-                                <td>{{$prospect->firstname}}</td>
-                                <td>{{$prospect->lastname}}</td>
-                                <td>{{$prospect->email}}</td>
-                                <td>{{$prospect->phone}}</td>
-                                <td>{{$prospect->pivot->lead}}</td>
+                                <td>{{$claim->firstname}}</td>
+                                <td>{{$claim->lastname}}</td>
+                                <td>{{$claim->email}}</td>
+                                <td>{{$claim->phone}}</td>
+                                <td>{{$claim->pivot->lead}}</td>
                                 <td><button class="btn prulife-btn-primary" data-toggle="tooltip" data-bss-tooltip="" type="button" title="Edit"><i class="fas fa-pen"></i></button><button class="btn prulife-btn-primary" data-toggle="tooltip" data-bss-tooltip="" type="button" title="Delete"><i class="fas fa-trash"></i></button></td>
                             </tr>
                         @empty
@@ -71,7 +72,7 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -156,7 +157,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection
 @section('scripts')
@@ -170,7 +171,7 @@
     <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"></script>
         <!-- phone input cdn -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.7/js/intlTelInput.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput-jquery.min.js" 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput-jquery.min.js"
 integrity="sha512-QK4ymL3xaaWUlgFpAuxY+6xax7QuxPB3Ii/99nykNP/PlK3NTQa/f/UbQQnWsM4h5yjQoMjWUhCJbYgWamtL6g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
@@ -206,7 +207,7 @@ integrity="sha512-QK4ymL3xaaWUlgFpAuxY+6xax7QuxPB3Ii/99nykNP/PlK3NTQa/f/UbQQnWsM
                     callback(countryCode);
                 });
             },
-        });  
+        });
         @if ($errors->any())
             $('#formModal').modal('show');
         @endif

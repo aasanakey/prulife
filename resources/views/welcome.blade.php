@@ -297,32 +297,32 @@
                             <div class="col-lg-6 wow fadeInRight" data-wow-delay=".5s">
                                 <div class="padding30 rounded img-shadow" data-bgcolor="rgba(240, 246, 234, .7)">
                                     <h2>No more hassles & no more worries. <span class="id-color"><a href="index.html"> Register today</a></span>.</h2>
-                                    <a href='insurance-details-1.html' class="icon-box rounded">
+                                    <a href="{{route('login')}}" class="icon-box rounded">
                                             <i class="icofont-group"></i>
                                             <span>Life</span>
                                         </a>
 
-                                    <a href='insurance-details-2.html' class="icon-box rounded">
+                                    <a href="{{route('login')}}" class="icon-box rounded">
                                             <i class="icofont-home"></i>
                                             <span>Home</span>
                                         </a>
 
-                                    <a href='insurance-details-31.html' class="icon-box rounded">
+                                    <a href="{{route('login')}}" class="icon-box rounded">
                                             <i class="icofont-car"></i>
                                             <span>Auto</span>
                                         </a>
 
-                                    <a href='insurance-details-4.html' class="icon-box rounded">
+                                    <a href="{{route('login')}}" class="icon-box rounded">
                                             <i class="icofont-heart-beat"></i>
                                             <span>Health</span>
                                         </a>
 
-                                    <a href='insurance-details-5.html' class="icon-box rounded">
+                                    <a href="{{route('login')}}" class="icon-box rounded">
                                             <i class="icofont-briefcase"></i>
                                             <span>Business</span>
                                         </a>
 
-                                    <a href='insurance-details-6.html' class="icon-box rounded">
+                                    <a href="{{route('login')}}" class="icon-box rounded">
                                             <i class="icofont-building"></i>
                                             <span>Condo</span>
                                         </a>

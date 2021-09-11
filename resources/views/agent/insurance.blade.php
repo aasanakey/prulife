@@ -17,15 +17,14 @@
     </style>
 @endsection
 @section('content')
-<div class="d-sm-flex justify-content-between align-items-center mb-4">
-    <h3 class="text-dark mb-0">Insurance</h3>
-    <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="#" data-toggle="modal" data-target="#formModal">
-        <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add Policy
-    </a>
-</div>
-@include('layouts.messages')
-<div class="container-fluid">
-    {{-- <h3 class="text-dark mb-4">Product</h3> --}}
+    <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0">Insurance</h3>
+        <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="#" data-toggle="modal" data-target="#formModal">
+            <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add Policy
+        </a>
+    </div>
+    @include('layouts.messages')
     <div class="card shadow">
         <div class="card-header py-3">
             <p class="text-prulife m-0 font-weight-bold">Insurance</p>

@@ -23,9 +23,9 @@
     @include('layouts.messages')
     <div class="card shadow">
         <div class="card-header py-3">
-            <p class="text-prulife m-0 font-weight-bold">Email mes</p>
+            <p class="text-prulife m-0 font-weight-bold">Email messages</p>
         </div>
-        <div class="card-body">
+        <div class="card-body d-flex flex-colum align-items-center justify-content-center">
             {{-- <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                 <table class="table my-0" id="clientsTable">
                     <thead>
@@ -79,7 +79,12 @@
                     </li>
                 </ul>
             @empty
-
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title"><i class="fas fa-exclamation-circle fa-7x"></i></h5>
+                        <p class="card-text">You have no messages</p>
+                    </div>
+                </div>
             @endforelse
         </div>
     </div>
