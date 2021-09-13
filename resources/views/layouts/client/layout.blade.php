@@ -3,7 +3,18 @@
 <ul class="navbar-nav text-light" id="accordionSidebar">
     <li class="nav-item"><a class="nav-link" href="{{route('user.dashboard')}}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
     <li class="nav-item"><a class="nav-link" href="{{route('user.insurance')}}"><i class="fas fa-bookmark"></i><span>Insurance Policies</span></a></li>
-    <li class="nav-item"><a class="nav-link" href="{{route('user.claims')}}"><i class="fas fa-file-invoice"></i><span>Insurance Claims</span></a></li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCliams" aria-expanded="false" aria-controls="collapseCliams">
+            <i class="fas fa-file-invoice"></i><span>Insurance Claims</span></a>
+        </a>
+        <div id="collapseCliams" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Claims</h6>
+                <a class="collapse-item" href="{{route('user.claims')}}"><i class="fas fa-money-bill"></i>&nbsp;<span>Claims</span></a>
+                <a class="collapse-item" href="{{route('user.claims.create')}}"><i class="fas fa-receipt"></i>&nbsp;<span>Make a Claim</span></a>
+            </div>
+        </div>
+    </li>
     <li class="nav-item"><a class="nav-link" href="{{route('user.payments')}}"><i class="fas fa-money-bill"></i><span>Payments</span></a></li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClient" aria-expanded="false" aria-controls="collapseClient">

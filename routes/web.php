@@ -30,9 +30,12 @@ Route::name('user.')->prefix('client')->middleware('auth:web')->group(function (
     Route::resource('profile', \App\Http\Controllers\UserController::class)->parameters(['profile' => 'user'])->except(['index', 'create', 'show']);
     Route::get('insurance', [\App\Http\Controllers\UserController::class, 'insurance'])->name('insurance');
     Route::get('claims', [\App\Http\Controllers\UserController::class, 'claims'])->name('claims');
+    Route::get('add/claims', [\App\Http\Controllers\UserController::class, 'createClaim'])->name('claims.create');
     Route::get('payments', [\App\Http\Controllers\UserController::class, 'payments'])->name('payments');
     Route::get('sms', [\App\Http\Controllers\UserController::class, 'sms'])->name('sms');
     Route::get('emails', [\App\Http\Controllers\UserController::class, 'emails'])->name('emails');
+    Route::post('communications', [\App\Http\Controllers\UserController::class, 'communications'])->name('communications');
+    Route::resource('claim', \App\Http\Controllers\ClaimsController::class)->except(['index', 'create', 'show','edit']);
 
 });
 

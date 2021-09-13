@@ -21,7 +21,7 @@
     {{-- <h3 class="text-dark mb-4">Product</h3> --}}
     <div class="d-sm-flex justify-content-between align-items-center mb-4">
         <h3 class="text-dark mb-0">Claims</h3>
-        <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="#" data-toggle="modal" data-target="#formModal">
+        <a class="btn btn-sm d-none d-sm-inline-block prulife-btn-primary" role="button" href="{{route('user.claims.create')}}">
             <i class="fas fa-plus fa-sm text-white-50"></i>&nbsp;Add Claim
         </a>
     </div>
@@ -35,11 +35,11 @@
                 <table class="table my-0" id="prospectsTable">
                     <thead>
                         <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Lead</th>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Policy</th>
+                            <th>Status</th>
+                            <th>Request Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -59,11 +59,11 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Lead</th>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Policy</th>
+                            <th>Status</th>
+                            <th>Request Date</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>

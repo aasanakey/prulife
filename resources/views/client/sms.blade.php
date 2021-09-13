@@ -51,85 +51,33 @@
         </div>
     </div>
     <!-- Modal -->
-    {{-- <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="formModalLabel">Enter Policy Info</h5>
+                <h5 class="modal-title" id="formModalLabel">Compose SMS</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <form id="form" action="{{route('agent.insurance')}}" method="post">
+                        <form id="form" action="{{route('user.communications')}}" method="post">
                             @csrf
+                            <input type="hidden" name="channel" value="sms">
                             <div class="form-group">
-                                <label for="insurance">Insurance Plan</label>
-                                <select id="insurance" class="form-control @error('insurance') is-invalid @enderror" name="insurance" value="{{old('insurance')}}" >
-                                    <option value=''></option>
-                                    @forelse ($insurance as $plan)
-                                        <option value='{{$plan->id}}' {{old('insurance') == $plan->id ? 'selected' : ''}}>{{$plan->name}}</option>
-                                    @empty
-                                        <option value=''>No insurance plan available</option>
-                                    @endforelse
-                                </select>
-                                @error('insurance')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="client">Client</label>
-                                <select id="client" class="form-control @error('client') is-invalid @enderror" name="client" value="{{old('client')}}" >
-                                   <option value=""></option>
-                                    @forelse ($clients as $client)
-                                    <option value='{{$client->id}}' {{old('client') == $client->id ? 'selected' : ''}}>{{$client->firstname.' '.$client->lastname}}</option>
-                                   @empty
-                                       <option value=''>No clients available</option>
-                                   @endforelse
-                                </select>
-                                @error('client')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="expiry_date">Expiry Date </label>
-                                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                    <input type="text" name="expiry_date" class="form-control datetimepicker-input  @error('expiry_date') is-invalid @enderror"
-                                    placeholer="Expiry Date" data-target="#datetimepicker1" autocomplete="expiry_date" />
-                                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                    </div>
-                                    @error('expiry_date')
+                                <label for="subject">Subject</label>
+                                <input  class="form-control @error('message') is-invalid @enderror" type="text" id="subject" name="subject" value="{{old('subject')}}">
+                                @error('subject')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="renewal_date">Renewal Date </label>
-                                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                                    <input type="text" name="renewal_date" class="form-control datetimepicker-input  @error('renewal_date') is-invalid @enderror"
-                                    placeholer="Renewal Date" data-target="#datetimepicker2" autocomplete="renewal_date" />
-                                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                    </div>
-                                    @error('renewal_date')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="beneficiaries">Beneficiaries</label>
-                                <textarea id="beneficiaries" class="textarea-noresize form-control @error('beneficiaries') is-invalid @enderror" name="beneficiaries" cols="3" placeholder="">{{old('beneficiaries')}}</textarea>
-                                @error('beneficiaries')
+                                <label for="message">Message</label>
+                                <textarea id="message" class="textarea-noresize form-control @error('message') is-invalid @enderror" name="message" placeholder="">{{old('message')}}</textarea>
+                                @error('message')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -144,7 +92,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 </div>
 @endsection
 @section('scripts')

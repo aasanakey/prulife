@@ -91,4 +91,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Models\Payment::class);
     }
+
+    /**
+     * Get the claims for the user.
+     */
+    public function claims()
+    {
+        return $this->hasMany(\App\Models\Claims::class);
+    }
 }

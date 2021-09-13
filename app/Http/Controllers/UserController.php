@@ -184,8 +184,18 @@ class UserController extends Controller
      */
     public function claims()
     {
-        $claims = auth()->user()->policies;
+        $claims = auth()->user()->claims;
         return view('client.claims',compact('claims'));
+    }
+
+    /**
+     * Show view for creating cliam requests
+     * @return \Illuminate\Http\Response
+     */
+    public function createClaim()
+    {
+        // $claims = auth()->user()->policies;
+        return view('client.create_claims');
     }
 
     /**
@@ -220,6 +230,11 @@ class UserController extends Controller
 
     public function communications(Request $request)    
     {
-        Validator::make($request->all(),[])->validate();
+        // dd($request->all());
+        Validator::make($request->all(),[
+            "channel" => ["required","in:sms,email"],
+            "subject" => ["required",'string',"max:191"],
+            "message" => ["required",'string'],
+        ])->validate();
     }
 }
