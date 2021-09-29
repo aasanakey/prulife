@@ -80,3 +80,38 @@ Route::prefix('csc')->group(function () {
     Route::post('city', [\App\Http\Controllers\CountryStateCityController::class, 'getCity'])->name('city');
 
 });
+
+/**
+ * Admin auth routes
+ */
+Route::name('admin.')->prefix('admin')->group(function () {
+    Route::get('/login', [\App\Http\Controllers\Auth\Admin\LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [\App\Http\Controllers\Auth\Admin\LoginController::class, 'login']);
+    Route::post('logout', [\App\Http\Controllers\Auth\Admin\LoginController::class, 'logout'])->name('logout');
+    Route::get('register', [\App\Http\Controllers\Auth\Admin\RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [\App\Http\Controllers\Auth\Admin\RegisterController::class, 'register']);
+    Route::get('password/reset', [\App\Http\Controllers\Auth\Admin\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('password/email', [\App\Http\Controllers\Auth\Admin\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('password/reset/{token}', [\App\Http\Controllers\Auth\Admin\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('password/reset', [\App\Http\Controllers\Auth\Admin\ResetPasswordController::class, 'reset'])->name('password.update');
+    Route::get('password/confirm', [\App\Http\Controllers\Auth\Admin\ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
+    Route::post('password/confirm', [\App\Http\Controllers\Auth\Admin\ConfirmPasswordController::class, 'confirm']);
+    Route::get('email/verify', [\App\Http\Controllers\Auth\Admin\VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('email/verify/{id}/{hash}', [\App\Http\Controllers\Auth\Admin\VerificationController::class, 'verify'])->name('verification.verify');
+    Route::post('email/resend', [\App\Http\Controllers\Auth\Admin\VerificationController::class, 'resend'])->name('verification.resend');
+});
+
+/**
+ * Agent dashboard routes
+ */
+Route::name('admin.')->prefix('admin')->middleware('auth:web-admin')->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
+    Route::resource('profile', \App\Http\Controllers\AdminController::class)->parameters(['profile' => 'admin']);
+    Route::get('/prospects', [\App\Http\Controllers\AgentController::class, 'prospects'])->name('prospects');
+    Route::post('/prospects', [\App\Http\Controllers\AgentController::class, 'createProspect']);
+    Route::get('/clients', [\App\Http\Controllers\AgentController::class, 'clients'])->name('clients');
+    Route::post('/clients', [\App\Http\Controllers\AgentController::class, 'createClients']);
+    Route::get('/insurance', [\App\Http\Controllers\AgentController::class, 'insurance'])->name('insurance');
+    Route::post('/insurance', [\App\Http\Controllers\AgentController::class, 'createInsurance']);
+
+});
