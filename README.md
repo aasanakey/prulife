@@ -36,6 +36,10 @@ Run database migrations
 
 run php artisan migrate
 
+### Seed database
+
+run php artisan db:seed
+
 ### Generate an app encryption key
 
 php artisan key:generate
